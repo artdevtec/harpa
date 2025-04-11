@@ -292,5 +292,52 @@
                 }
             })
         </script>
+        <style>
+
+            #share_button {
+                position: absolute;
+                bottom: 64px;
+                right: 16px;
+                z-index: 10;
+            }
+
+            body:has(#install_button.none) #share_button {
+                position: absolute;
+                bottom: 16px;
+                right: 16px;
+                z-index: 10;
+            }
+        </style>
+        <button
+            id="share_button" class="
+                piece-FAB small
+                piece-surface
+                background-color-048
+                background-color-044-hover
+                text-color-100
+                ripple-color-100
+            ">
+            <span class="material-symbols-rounded icon share" translate="no">share</span>
+            <span class="piece-ripple"></span>
+        </button>
+        <script>
+            const shareButton = document.getElementById('share_button');
+                shareButton.addEventListener('click', async () => {
+                if (navigator.share) {
+                    try {
+                    await navigator.share({
+                        title: 'Harpa Cristã',
+                        text: 'Confira este PWA incrível da Harpa Cristã!',
+                        url: 'https://artdevtec.github.io/harpa/',
+                    });
+                    console.log('Compartilhado com sucesso');
+                    } catch (err) {
+                    console.error('Erro ao compartilhar:', err);
+                    }
+                } else {
+                    alert('O compartilhamento não é suportado neste navegador.');
+                }
+                });
+        </script>
     </body>
 </html>

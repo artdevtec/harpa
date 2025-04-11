@@ -32,6 +32,7 @@ window.addEventListener("beforeinstallprompt", e => {
 	// Show the install button
 	// installButton.hidden = false;
 	installButton.style.display = "grid";
+	installButton.classList.add("none")
 	installButton.addEventListener("click", installApp);
 });
 
