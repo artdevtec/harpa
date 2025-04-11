@@ -307,6 +307,11 @@
                 right: 16px;
                 z-index: 10;
             }
+
+            @media screen and (max-width: 768px){
+                #share_button { bottom: 144px;}
+                body:has(#install_button.none) #share_button { bottom: 96px;}
+            }
         </style>
         <button
             id="share_button" class="
@@ -316,6 +321,7 @@
                 background-color-044-hover
                 text-color-100
                 ripple-color-100
+                tertiary
             ">
             <span class="material-symbols-rounded icon share" translate="no">share</span>
             <span class="piece-ripple"></span>
