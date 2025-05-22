@@ -32,6 +32,7 @@ harpa.pages
             
             ripple-color-048
             piece-icon-active
+            s-40-active
         ">
             <input id="nav-btn-${i}" type="radio" name="nav" value="${page.name}" class="piece-controller">
             <span class="material-symbols-rounded piece-icon" translate="no">${page.icon}</span>

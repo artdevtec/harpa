@@ -57,7 +57,7 @@ harpa.pages.push({
                         ripple-color-048
                     "
                 >
-                    <span class="numero piece-surface background-color-088 text-color-012 tertiary">${numero}</span>
+                    <span class="numero piece-surface background-color-088 text-color-012 tertiary s-40">${numero}</span>
                     <span class="nome">${nome}</span>
                     <span class="piece-ripple"></span>
                 </button>
@@ -91,16 +91,16 @@ harpa.pages.push({
         mAside.innerHTML = `
             <section id="popover-letra" class="piece-surface">
                 <header>
-                    <span class="numero piece-surface background-color-088 text-color-012 tertiary">${numero}</span>
+                    <span class="numero piece-surface background-color-088 text-color-012 tertiary s-40">${numero}</span>
                     <span class="nome">${nome}</span>
-                    <button id="close" popovertarget="popover-modal" class="piece-button piece-surface background-color-088 text-color-to-012 background-color-084-hover secondary ripple-color-048">
+                    <button id="close" popovertarget="popover-modal" class="s-40 piece-icon-button piece-small piece-surface background-color-088 text-color-to-012 background-color-084-hover secondary ripple-color-048">
                         <span class="material-symbols-rounded piece-icon" translate="no">close</span>
                         <span class="piece-ripple"></span>
                     </button>
                 </header>
                 <main></main>
                 <footer>
-                    <button id="prev" class="piece-button piece-surface background-color-088 text-color-to-012 background-color-084-hover ripple-color-048">
+                    <button id="prev" class="piece-icon-button piece-small piece-wide piece-surface background-color-088 text-color-to-012 background-color-084-hover ripple-color-048">
                         <span class="material-symbols-rounded piece-icon" translate="no">arrow_left_alt</span>
                         <span class="piece-ripple"></span>
                     </button>
@@ -114,12 +114,13 @@ harpa.pages.push({
                         background-color-048-hover-active
                         text-color-012-active
                         ripple-color-048
+                        s-40
                         ${favorito}
                     ">
                         <span class="material-symbols-rounded piece-icon" translate="no">favorite</span>
                         <span class="piece-ripple"></span>
                     </button>
-                    <button id="next" class="piece-button piece-surface background-color-088 text-color-to-012 background-color-084-hover ripple-color-048">
+                    <button id="next" class="piece-icon-button piece-small piece-wide piece-surface background-color-088 text-color-to-012 background-color-084-hover ripple-color-048">
                         <span class="material-symbols-rounded piece-icon" translate="no">arrow_right_alt</span>
                         <span class="piece-ripple"></span>
                     </button>
@@ -149,7 +150,7 @@ harpa.pages.push({
                 //adiciona verso que repete
                 if(versos.filter(v=>!/^\d+/.test(v))[0]) {
                     template += `
-                        <div>
+                        <div class="s-40">
                             <p class='${surface} tertiary'>${versos.filter(v=>!/^\d+/.test(v))[0].split("@").join(`</p><p class='${surface} tertiary'>`)}</p>
                         </div>
                     `
