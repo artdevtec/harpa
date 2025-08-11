@@ -6,7 +6,7 @@ body {
     overflow: hidden;
     position: relative;
     display: grid;
-    grid-template-rows: 80px 1px 1fr;
+    grid-template-rows: auto 1px 1fr;
     grid-template-columns: auto 1px 400px 1px 1fr;
     grid-template-areas:
         'm-header m-header m-header m-header m-header'
@@ -152,18 +152,7 @@ body {
     #m-divider-h {grid-area: m-divider-h;}
 
     #m-nav {
-        display: grid;
         grid-area: m-nav;
-        grid-auto-flow: row;
-        gap: 16px;
-        padding: 16px;
-        align-content: start;
-
-        .piece-nav-button {
-            padding: 16px;
-            grid-template-columns: auto 1fr;
-            .piece-label{justify-self: start;}
-        }
     }
 
     #m-divider-v-1 {grid-area: m-divider-v-1;}
@@ -187,7 +176,7 @@ body {
 @media screen and (max-width: 768px){
 
     body {
-        grid-template-rows: 80px 1px 1fr 1px 80px;
+        grid-template-rows: auto 1px 1fr 1px auto;
         grid-template-columns: unset;
         grid-template-areas:
             'm-header'
@@ -236,19 +225,6 @@ body {
 
         #m-divider-v-2 {display: none;}
         #m-aside {display: none;z-index: 101;}
-
-        #m-nav {
-            height: 80px;
-            grid-auto-flow: column;
-
-            .piece-nav-button {
-                padding: 8px;
-                grid-template-columns: 1fr;
-                .piece-label {
-                    display: none;
-                }
-            }
-        }
 
         #m-aside {
             &.display-grid {display: grid;}
