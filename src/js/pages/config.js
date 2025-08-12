@@ -431,6 +431,9 @@ harpa.pages.push({
                         &:last-of-type {border-radius: 8px 8px  32px 32px;}
                     }
                 }
+                #font-size {
+                    
+                }
             </style>
             <div id="tema" class="piece-surface background-color-auto-00 text-color-012" style="padding:16px;">
                 <h1>Tamanho da letra</h1>

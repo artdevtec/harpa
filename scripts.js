@@ -1,5 +1,7 @@
+// ***** Register Service Worker *****
+
 if ("serviceWorker" in navigator) {
-	navigator.serviceWorker.register("/sw.js")
+	navigator.serviceWorker.register("sw.js") // Corrigido: era "/sw.js"
 		.then(serviceWorker => {
 			console.log("Service Worker registered: ", serviceWorker);
 		})
@@ -30,8 +32,8 @@ window.addEventListener("beforeinstallprompt", e => {
 	// Stash the event so it can be triggered later.
 	deferredPrompt = e;
 	// Show the install button
-	// installButton.hidden = false;
 	installButton.style.display = "grid";
+	installButton.classList.remove("none");
 	installButton.addEventListener("click", installApp);
 });
 
@@ -44,9 +46,8 @@ function installApp() {
 	deferredPrompt.userChoice.then(choiceResult => {
 		if (choiceResult.outcome === "accepted") {
 			console.log("PWA setup accepted");
-			// installButton.hidden = true;
 			installButton.style.display = "none";
-			installButton.classList.add("none")
+			installButton.classList.add("none");
 		} else {
 			console.log("PWA setup rejected");
 		}
@@ -66,18 +67,66 @@ window.addEventListener("appinstalled", evt => {
 function registerNotification() {
 	Notification.requestPermission(permission => {
 		if (permission === 'granted') {
-			registerBackgroundSync()
-		} else console.error("Permission was not granted.")
-	})
+			registerBackgroundSync();
+		} else {
+			console.error("Permission was not granted.");
+		}
+	});
 }
 
 function registerBackgroundSync() {
 	if (!navigator.serviceWorker) {
-		return console.error("Service Worker not supported")
+		return console.error("Service Worker not supported");
 	}
 
 	navigator.serviceWorker.ready
 		.then(registration => registration.sync.register('syncAttendees'))
 		.then(() => console.log("Registered background sync"))
-		.catch(err => console.error("Error registering background sync", err))
+		.catch(err => console.error("Error registering background sync", err));
+}
+
+
+// ********* Atualizar PWA Manualmente *************
+
+function atualizarPWA() {
+	if ('serviceWorker' in navigator) {
+		navigator.serviceWorker.getRegistration().then(registration => {
+			if (registration) {
+				// Força o SW a buscar nova versão do arquivo sw.js
+				registration.update().then(() => {
+					if (registration.waiting) {
+						console.log("Nova versão do Service Worker pronta. Ativando...");
+						registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+					}
+				});
+			}
+		});
+
+		// Aguarda 1s e recarrega a página para aplicar nova versão
+		setTimeout(() => {
+			window.location.reload(true);
+		}, 1000);
+	}
+}
+
+
+// ********* Desregistrar e forçar limpeza e reload *************
+
+function forceUpdatePWA() {
+	if ('serviceWorker' in navigator) {
+		navigator.serviceWorker.getRegistrations().then(registrations => {
+			registrations.forEach(registration => {
+				registration.unregister().then(success => {
+					if (success) {
+						console.log("Service Worker desregistrado com sucesso.");
+					} else {
+						console.warn("Falha ao desregistrar o Service Worker.");
+					}
+				});
+			});
+		}).finally(() => {
+			// Recarrega a página para forçar novo download e registro limpo do SW
+			window.location.reload(true);
+		});
+	}
 }
