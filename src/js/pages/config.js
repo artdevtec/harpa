@@ -8,7 +8,7 @@ harpa.pages.push({
         //m-main
         const mMain = document.querySelector(`#m-main`)
         mMain.innerHTML = `
-            <section id="page-config" class="piece-surface"></section>
+            <section id="page-config" class="piece-surface webkit-scrollbar-display-0"></section>
         `
 
         const mAside = document.querySelector(`#m-aside`)
@@ -54,7 +54,7 @@ harpa.pages.push({
                     }
                 }
             </style>
-            <div id="main-color" class="piece-surface background-color-088 text-color-012">
+            <div id="main-color" class="piece-surface background-color-088 text-color-012" style="display:none;">
                 <h1>Cor Principal</h1>
                 <div id="sContainer">
                     <canvas id="slider" width="200" height="200"></canvas>
@@ -173,29 +173,22 @@ harpa.pages.push({
                 #page-config>#tema {
                     display: grid;
                     border-radius: 16px;
-                    padding: 16px;
                     gap: 16px;
                     grid-template-rows: auto 1fr;
                     h1 {font-size:20px;font-weight:900;}
                     #tgg-mm {
-                        place-self: center;
-                        height:40px;
                         border-radius: 40px;
                         display: grid;
-                        grid-template-columns: repeat(2, 1fr);
-                        padding:4px;
+                        grid-template-columns: 1fr auto;
+                        padding:16px;
                         gap: 4px;
                         cursor: var(--cursor-pointer);
                         & *:active {pointer-events: none;}
                         & .label {
                             display: grid;
-                            place-content: center;
-                            border-radius: 40px;
-                            font-weight: 700;
-                            font-size: 14px;
-                            z-index: 1;
+                            place-content: center start;
                             padding: 0 16px;
-                            text-wrap: nowrap;
+                            font-weight: 500;
                         }
                         & input {display: none;}
                         .active-indicator {
@@ -218,39 +211,39 @@ harpa.pages.push({
             </style>
             <div id="tema" class="piece-surface background-color-088 text-color-012">
                 <h1>Tema</h1>
-                <label id="tgg-mm" class="
+                <label id="tgg-mm"  class="
                     piece-surface
-
-                    background-color-080
-                    background-color-076-hover
-                    
-                    ripple-color-048
+                    background-color-auto-04
                 ">
-                    <span class="piece-ripple"></span>
-                    <input type="checkbox" name="tema" class="piece-controller">
-                    <!-- <span class="piece-surface surface-parent background-color-bg active-indicator"></span> -->
-                    <span class="
-                        piece-surface
-                        surface-parent
-                        label
-                        background-color-096
-                        background-color-080-active
-                        background-color-092-hover
-                        background-color-076-hover-active
-                        text-color-048
-                        text-color-024-active
-                    ">Claro</span>
-                    <span class="
-                        piece-surface
-                        surface-parent
-                        label
-                        background-color-080
-                        background-color-096-active
-                        background-color-076-hover
-                        background-color-092-hover-active
-                        text-color-024
-                        text-color-048-active
-                    ">Escuro</span>
+                <span class="label">Tema Escuro</span>
+                <div class="
+                            piece-switch
+                            piece-surface
+
+                            background-color-auto-00
+                            background-color-auto-02-hover
+
+                            background-color-auto-12-active
+                            background-color-auto-14-active-hover
+
+
+                            border-color-auto-04
+                            border-color-auto-10-active
+                            
+                            ripple-to-fg
+                            ripple-to-accent-active
+                        ">
+                            <span class="piece-ripple"></span>
+                            <input type="checkbox" class="piece-controller" name="switch" value="switch">
+                            <span class="
+                                piece-indicator
+                                piece-surface
+                                piece-parent
+                                background-color-auto-12
+                                background-color-auto-00-active
+                            "></span>
+                        </div>
+
                 </label>
             </div>
         `
@@ -259,13 +252,13 @@ harpa.pages.push({
         if(harpa.darkMode.get()) tema.setAttribute('checked', true)
             document.querySelector("#page-config #tema input").addEventListener('click', (e)=>{
             let body = document.body
-            let isDark = body.classList.contains('dark')
+            let isDark = body.classList.contains('piece-dark')
             if (isDark) {
-                body.classList.remove('dark')
-                body.classList.add('light')
+                body.classList.remove('piece-dark')
+                body.classList.add('piece-light')
             } else {
-                body.classList.remove('light')
-                body.classList.add('dark')
+                body.classList.remove('piece-light')
+                body.classList.add('piece-dark')
             }
             harpa.darkMode.set()
         })
@@ -353,7 +346,7 @@ harpa.pages.push({
                     }
                 }
             </style>
-            <section id="paletas" class="piece-surface background-color-088 text-color-012">
+            <section id="paletas" class="piece-surface background-color-088 text-color-012" style="display:none;">
                 <h1>Paleta</h1>
                 <div>
                     <label class="analoga option piece-surface ripple-color-048 border-color-064">
@@ -427,10 +420,25 @@ harpa.pages.push({
                     }
                     input {display: none;}
                 }
+                #tema {}
+                #tema .letra {
+                    display: grid;
+                    gap: 4px;
+                    p {
+                        padding: 16px;
+                        border-radius: 8px;
+                        &:first-of-type {border-radius: 32px 32px 8px 8px;}
+                        &:last-of-type {border-radius: 8px 8px  32px 32px;}
+                    }
+                }
             </style>
-            <div id="tema" class="piece-surface background-color-088 text-color-012">
+            <div id="tema" class="piece-surface background-color-auto-00 text-color-012" style="padding:16px;">
                 <h1>Tamanho da fonte</h1>
                 <div id="font-size" style="display:flex;" class="piece-segmented-button" class="piece-surface background-color-mg"></div>
+                <span class="letra" style="font-weight:500; border-radius: 16px; font-size: calc(16px + ((var(--font-size) - 1) * 4px));">
+                    <p class="letra piece-surface background-color-auto-06 text-color-auto-21 piece-secondary piece-s-40">Deus prometeu com certeza</p>
+                    <p class="letra piece-surface background-color-auto-06 text-color-auto-21 piece-secondary piece-s-40">Chuvas de graça mandar;...</p>
+                </span>
             </div>
         `
         document.querySelector(id).appendChild(tools.create(templateFragment))

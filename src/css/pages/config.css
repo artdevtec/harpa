@@ -2,7 +2,7 @@
     display: grid;
     gap: 16px;
     padding: 16px;
-    place-content: start center;
+    align-content: start;
     overflow-y: scroll;
 
     @media screen and (max-width: 768px){
