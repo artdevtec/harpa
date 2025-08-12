@@ -215,7 +215,7 @@ harpa.pages.push({
                     piece-surface
                     background-color-auto-04
                 ">
-                <span class="label">Tema Escuro</span>
+                <span class="label">Modo Escuro</span>
                 <div class="
                             piece-switch
                             piece-surface
@@ -433,7 +433,7 @@ harpa.pages.push({
                 }
             </style>
             <div id="tema" class="piece-surface background-color-auto-00 text-color-012" style="padding:16px;">
-                <h1>Tamanho da fonte</h1>
+                <h1>Tamanho da letra</h1>
                 <div id="font-size" style="display:flex;" class="piece-segmented-button" class="piece-surface background-color-mg"></div>
                 <span class="letra" style="font-weight:500; border-radius: 16px; font-size: calc(16px + ((var(--font-size) - 1) * 4px));">
                     <p class="letra piece-surface background-color-auto-06 text-color-auto-21 piece-secondary piece-s-40">Deus prometeu com certeza</p>
@@ -448,13 +448,13 @@ harpa.pages.push({
             const template = `
                 <label class="
                     piece-surface
-                    background-color-088
-                    background-color-084-hover
-                    background-color-048-active
-                    text-color-100-active
-                    background-color-044-hover-active
-                    border-color-080
-                    ripple-color-100
+                    background-color-auto-00
+                    background-color-auto-01-hover
+                    background-color-auto-11-active
+                    background-color-auto-12-hover-active
+                    text-color-auto-23
+                    text-color-auto-00-active
+                    border-color-auto-04
                 ">
                     <input class="piece-controller" type="radio" name="font-size" value="${i+1}">
                     <span class="label">${size}</span>

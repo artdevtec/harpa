@@ -232,26 +232,29 @@
             }
             @media screen and (max-width: 768px){
                 #install_button {
-                    bottom: 96px;
+                    bottom: 80px;
                     .install_mobile {display: grid;}
                     .install_desktop {display: none;}
                 }
             }
         </style>
         <button
-        style="display:none;"
-        id="install_button" class="
-            piece-FAB small
-            piece-surface
-            background-color-048
-            background-color-044-hover
-            text-color-100
-            ripple-color-100
-            none
-            s-40
-        ">
+            style="display:none;"
+            id="install_button"
+            class="
+                piece-button
+                piece-extra-small
+                piece-surface
+                background-color-auto-11
+                background-color-auto-12-hover
+                text-color-auto-00
+                piece-s-40
+                none
+            "
+        >
             <span class="material-symbols-rounded icon install_mobile" translate="no">install_mobile</span>
             <span class="material-symbols-rounded icon install_desktop" translate="no">install_desktop</span>
+            <span class="piece-label" translate="no">Instalar</span>
             <span class="piece-ripple"></span>
         </button>
         <!-- PWA | scripts -->
@@ -367,13 +370,14 @@
             }
 
             @media screen and (max-width: 768px){
-                #share_button { bottom: 144px;}
-                body:has(#install_button.none) #share_button { bottom: 96px;}
+                #share_button { bottom: 120px;}
+                body:has(#install_button.none) #share_button { bottom: 80px;}
             }
         </style>
         <button
             id="share_button" class="
-                piece-button piece-extra-small
+                piece-button
+                piece-extra-small
                 piece-surface
                 background-color-auto-11
                 background-color-auto-12-hover
