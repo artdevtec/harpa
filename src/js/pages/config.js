@@ -220,15 +220,15 @@ harpa.pages.push({
                             piece-switch
                             piece-surface
 
-                            background-color-auto-00
-                            background-color-auto-02-hover
+                            background-color-auto-04
+                            background-color-auto-05-hover
 
-                            background-color-auto-12-active
-                            background-color-auto-14-active-hover
+                            background-color-auto-11-active
+                            background-color-auto-12-active-hover
 
 
-                            border-color-auto-04
-                            border-color-auto-10-active
+                            border-color-auto-08
+                            border-color-auto-11-active
                             
                             ripple-to-fg
                             ripple-to-accent-active
@@ -451,6 +451,7 @@ harpa.pages.push({
             const template = `
                 <label class="
                     piece-surface
+                    piece-button
                     background-color-auto-00
                     background-color-auto-01-hover
                     background-color-auto-11-active

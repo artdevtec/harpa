@@ -85,7 +85,7 @@ harpa.pages.push({
         //adicionar função de carregar letra ao clicar no botão
         document.querySelector('#page-home').addEventListener('click', e => {
             if (e.target.classList.contains('card-list')) {
-                this.showLyric(e.target.value)
+                this.showLyric(e.target.value, true)
                 mAside.classList.add('display-grid')
                 document.querySelector('.card-list.piece-actived')?.classList.remove('piece-actived')
                 e.target.classList.add('piece-actived')
@@ -94,9 +94,9 @@ harpa.pages.push({
         })
 
     },
-    showLyric(numero_do_hino) {
+    showLyric(numero_do_hino, changelocation) {
 
-        window.location.href = window.location.pathname + "#";
+        if(changelocation) window.location.href = window.location.pathname + "#";
 
         //obter dados da musica pelo numero
         let { nome, numero, letra } = db.filter(f=>f.numero==numero_do_hino)[0]
@@ -210,11 +210,11 @@ harpa.pages.push({
 
         //BOTÃO PARA PASSAR MUSICA
         document.querySelector('#next').addEventListener('click', (event)=> {
-            this.showLyric(parseInt(document.querySelector("#popover-letra .numero").innerText)+1)
+            this.showLyric(parseInt(document.querySelector("#popover-letra .numero").innerText)+1, false)
         })
         //BOTÃO PARA VOLTAR MUSICA
         document.querySelector('#prev').addEventListener('click', (event)=> {
-            this.showLyric(parseInt(document.querySelector("#popover-letra .numero").innerText)-1)
+            this.showLyric(parseInt(document.querySelector("#popover-letra .numero").innerText)-1, false)
         })
         document.querySelector('#fav').addEventListener('click', (event)=> {
             harpa.favoritos.set(+document.querySelector("#popover-letra .numero").innerText)
